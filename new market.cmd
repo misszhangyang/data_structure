@@ -1,0 +1,1 @@
+start .\eclipse\eclipse.exe  -vm .\jdk1.8.0_111\bin\javaw.exe -clean -data .\git_workspace_newmarket -vmargs -Xms512m -Xmx512m -XX:PermSize=128m -XX:MaxPermSize=128m -Xmn168m -XX:+DisableExplicitGC
