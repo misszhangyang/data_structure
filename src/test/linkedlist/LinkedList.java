@@ -13,6 +13,7 @@ public class LinkedList {
           Node node2 = new Node(2,"销摩","xiaomo");
           Node node3 = new Node(3,"张咪","zhangmi");
           Node node4 = new Node(4,"萧峰","xiaofen");
+          Node newNode = new Node(4,"天龙八部","tianlongbabu");
           
           SingleLinkedList  singleLinkedList = new SingleLinkedList();
 //          singleLinkedList.add(node1);
@@ -25,6 +26,12 @@ public class LinkedList {
           singleLinkedList.addBySquence(node4);
           singleLinkedList.addBySquence(node3);
           singleLinkedList.addBySquence(node3);
+          
+          singleLinkedList.traverse();
+          
+          singleLinkedList.updateNode(newNode);
+          
+          singleLinkedList.delNode(3);
           
           singleLinkedList.traverse();
          
@@ -82,6 +89,59 @@ class SingleLinkedList {
 			tmpNode.next = node;
 		}
 	}
+	
+	//修改某个节点
+	public void updateNode(Node node) {
+		//首先需要找到对应的节点的位置，然后进行修改
+		Node tmpNode = headNode;
+		boolean flag = false;
+		while(true) {
+			//表示遍历到最后还是没有找到需要变更信息的节点的位置
+			if(tmpNode.next == null) {
+				break;
+			}
+			//找到节点，将flag变为ture，在while循环外将节点信息改变
+			if(tmpNode.next.number == node.number) {
+				flag = true;
+				break;
+			}
+			//不符合break条件的时候，将指针后移，继续遍历当前链表的
+			tmpNode = tmpNode.next;
+		}
+		if(flag) {
+			System.out.println("已经找到对应的节点的位置，并修改当前结点" + node.number);
+			tmpNode.next.name = node.name;
+			tmpNode.next.nickName = node.nickName;
+		}else {
+			System.out.println("----没有找到需要修改的节点的位置信息 ----");
+		}
+		
+	}
+	
+	//删除某个节点(找到对应的需要删除节点信息的前一个位置，将该节点的next的指向变更)
+	//这里的number表示节点信息中的number
+	public void delNode(int number) {
+		Node tmpNode = headNode.next;
+		boolean flag = false;
+		while(true) {
+			//表示当前链表为空
+			if(tmpNode == null) {
+				break;
+			}
+			if(tmpNode.next.number == number) {
+				flag = true;
+				break;
+			}
+			tmpNode = tmpNode.next;
+		}
+		if(flag) {
+			//表示已经找到对应的节点位置的，它的前一个节点为tmpNode,删除节点时只需要将该节点的next指向tmpNode.next.next即可
+			tmpNode.next = tmpNode.next.next;
+		}else {
+			System.out.println("未找到需要删除位置为节点信息");
+		}
+	}
+	
 	
 	//遍历链表
 	public void traverse() {
