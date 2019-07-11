@@ -1,5 +1,7 @@
 package test.linkedlist;
 
+import java.util.Stack;
+
 /**
  * 单链表的实现
  * day07-09
@@ -29,11 +31,15 @@ public class LinkedList {
           
           singleLinkedList.traverse();
           
-          singleLinkedList.updateNode(newNode);
+          singleLinkedList.reserver(singleLinkedList.getSingleNode());
           
-          singleLinkedList.delNode(3);
-          
-          singleLinkedList.traverse();
+//          singleLinkedList.traverse();
+//          
+//          singleLinkedList.updateNode(newNode);
+//          
+//          singleLinkedList.delNode(3);
+//          
+//          singleLinkedList.traverse();
          
           
           
@@ -45,6 +51,12 @@ class SingleLinkedList {
 	
 	//定义一个不可变的头节点，不存放具体的信息
 	private Node headNode = new Node(0, " ", "");
+	
+	
+	//返回当前的链表对象
+	public Node getSingleNode() {
+		return headNode;
+	}
 
 	// 向链表中添加节点信息
 	public void add(Node node) {
@@ -139,6 +151,28 @@ class SingleLinkedList {
 			tmpNode.next = tmpNode.next.next;
 		}else {
 			System.out.println("未找到需要删除位置为节点信息");
+		}
+	}
+	
+	//将链表中的节点反转（百度面试题）
+	//思路分析，可以利用栈的先进后出特性对链表进行反转
+	public void reserver(Node node) {
+		Node tmpNode = node.next;
+		if(tmpNode == null) {
+			//说明该链表为空
+			System.out.println("该链表尾空，无法反转");
+			return;
+		}
+		Stack<Node> stackNode = new Stack<Node>();
+		while(tmpNode != null) {
+			//取出当前的链表中的节点放入栈中
+			stackNode.push(tmpNode);
+			tmpNode = tmpNode.next;
+		}
+		//当while循环结束，表示已经遍历完该链表 注意点，这里使用pop的时候弹出栈的头元素，此时stack.size也是变小的，所以使用一个变量将当前的size固定
+		int stackSize = stackNode.size();
+		for(int i = 0; i < stackSize;i++) {
+			System.out.println("打印出当前链表反转后的结果是：" + stackNode.pop());
 		}
 	}
 	
