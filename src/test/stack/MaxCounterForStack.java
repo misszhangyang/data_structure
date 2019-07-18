@@ -1,41 +1,44 @@
 package test.stack;
 
-/**
- * 利用栈实现一个字符的计算功能（6+2*5-2） = 14 思路分析： 1 关键点，分为数栈和符号栈，当符合栈为空时，从计算字符串中取出来的符号就直接入栈
- * 2 当符号栈中非空时，需要对符号栈的的符号和入栈的符号进行优先级的比较，如果优先级比栈顶的符号高， 3
- * 则直接将符号入栈，如果优先级比栈顶符号小或则等于，则弹出当前数栈的俩个元素和符号栈的栈顶符合，直接进行运算，将运算结果入栈
- * 
- * @author yang
- *
- */
-public class CounterForStack {
-
+public class MaxCounterForStack {
 	public static void main(String[] args) {
-		CounterStack numStack = new CounterStack(4);
-		CounterStack chStack = new CounterStack(7);
-		String str = "4+7*5+5-9+9-4-6";
+		MaxCounterStack numStack = new MaxCounterStack(7);
+		MaxCounterStack chStack = new MaxCounterStack(7);
+		String str = "90+9+5*7-2";
 		int index = 0;
+		int numIndex = 0;
 		int num1;
 		int num2;
 		char ch1;
 		char ch2;
-		boolean isChar = false;
 		int result;
 		while (true) {
 			// 获取第一个元素
 			ch1 = str.substring(index, index + 1).charAt(0);
 			// 如果当前符合栈是空，则直接入栈，针对多位数字，则先进行判断再入库
-			// 如果当前字符是数字，继续取下一个char，如果是符合，则入库，否则继续取值
+			// 如果当前字符是数字，则不入栈，继续向后移动，  90 + 4*7 -9
+			//如果取出来是数字，则继续向后移动，=> 指导下一位是符号，则取出第一位到最后一位
+			//如果是符号，则将第一个数入栈
 			if (!numStack.isChar(ch1)) {
-				numStack.addStack(ch1);
+				numIndex++;
+				//如果最后一位是数字
+				while(index == str.length() - 1) {
+					numStack.addStack(ch1);
+					index++;
+				}
+//				numStack.addStack(ch1);
 			} else {
 				if (chStack.isNull()) {
-					isChar = true;
+					ch2 = (char)((Integer.parseInt(str.substring(0, numIndex)) + '0'));
+					numStack.addStack(ch2);
 					chStack.addStack(ch1);
 				} else {
+					ch2 = str.substring(numIndex, index).charAt(0);
+					numStack.addStack(ch2);
 					// 当前符号栈为非空，则先判断优先级,优先级比当前栈中符号小于或等于，则直接弹出数栈中的数进行计算
 					if (chStack.getLevelByChar(ch1 - 48) > chStack.getLevelByChar(chStack.getFirst())) {
 						chStack.addStack(ch1);
+						numIndex++;
 					} else {
 						// 当前符号栈的符号优先级比符号栈中的优先级小，直接弹出数栈的俩个数和符号栈中的符号进行运算然后入栈
 						num1 = numStack.popStack();
@@ -43,10 +46,11 @@ public class CounterForStack {
 						ch2 = (char) (chStack.popStack() + '0');
 						numStack.addStack((char) (numStack.counterNum(num1, num2, ch2) + '0'));
 						chStack.addStack(ch1);
+						numIndex++;
 					}
 				}
 			}
-			if (index < str.length() - 1) {
+			if (index < str.length()) {
 				index++;
 			} else {
 				while (numStack.getTop() >= 1) {
@@ -61,18 +65,17 @@ public class CounterForStack {
 		}
 		System.out.println(str + "=" + result);
 	}
-
 }
 
-// 使用数组实现栈的相关方法
-// 当使用栈实现计算器功能时，基本的方法下还需要加相关的方法
+//使用数组实现栈的相关方法
+//当使用栈实现计算器功能时，基本的方法下还需要加相关的方法
 
-class CounterStack {
+class MaxCounterStack {
 	private int maxSize; // 表示的是栈的大小
 	private int top = -1; // 表示的是栈顶元素的指针位置，初始值为-1
 	private int[] arr; // 使用数组模拟栈
 
-	public CounterStack(int maxSize) {
+	public MaxCounterStack(int maxSize) {
 		this.maxSize = maxSize;
 		this.arr = new int[maxSize];
 	}
@@ -198,3 +201,5 @@ class CounterStack {
 	}
 
 }
+
+
