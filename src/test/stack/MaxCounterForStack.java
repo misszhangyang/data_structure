@@ -123,7 +123,7 @@ class MaxCounterStack {
 		}
 	}
 
-	// 依据传入的数和符合进行运算
+	// 依据传入的数和符号进行运算
 	public int counterNum(int num1, int num2, int c) {
 		int returnValue = 0;
 		switch (c) {

@@ -1,5 +1,10 @@
 package test.linkedlist;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
 import java.util.Stack;
 
 /**
@@ -11,27 +16,27 @@ import java.util.Stack;
 public class LinkedList {
 	public static void main(String[] args) {
 
-		Node node1 = new Node(1, "李浩", "lihao");
-		Node node2 = new Node(2, "销摩", "xiaomo");
-		Node node3 = new Node(3, "张咪", "zhangmi");
-		Node node4 = new Node(4, "萧峰", "xiaofen");
-		Node newNode = new Node(4, "天龙八部", "tianlongbabu");
-
-		SingleLinkedList singleLinkedList = new SingleLinkedList();
-		// singleLinkedList.add(node1);
-		// singleLinkedList.add(node2);
-		// singleLinkedList.add(node4);
-		// singleLinkedList.add(node3);
-
-		singleLinkedList.addBySquence(node1);
-		singleLinkedList.addBySquence(node2);
-		singleLinkedList.addBySquence(node4);
-		singleLinkedList.addBySquence(node3);
-		singleLinkedList.addBySquence(node3);
-
-		singleLinkedList.traverse();
-
-		singleLinkedList.reserver(singleLinkedList.getSingleNode());
+//		Node node1 = new Node(1, "李浩", "lihao");
+//		Node node2 = new Node(2, "销摩", "xiaomo");
+//		Node node3 = new Node(3, "张咪", "zhangmi");
+//		Node node4 = new Node(4, "萧峰", "xiaofen");
+//		Node newNode = new Node(4, "天龙八部", "tianlongbabu");
+//
+//		SingleLinkedList singleLinkedList = new SingleLinkedList();
+//		// singleLinkedList.add(node1);
+//		// singleLinkedList.add(node2);
+//		// singleLinkedList.add(node4);
+//		// singleLinkedList.add(node3);
+//
+//		singleLinkedList.addBySquence(node1);
+//		singleLinkedList.addBySquence(node2);
+//		singleLinkedList.addBySquence(node4);
+//		singleLinkedList.addBySquence(node3);
+//		singleLinkedList.addBySquence(node3);
+//
+//		singleLinkedList.traverse();
+//
+//		singleLinkedList.reserver(singleLinkedList.getSingleNode());
 
 		// singleLinkedList.traverse();
 		//
@@ -40,6 +45,15 @@ public class LinkedList {
 		// singleLinkedList.delNode(3);
 		//
 		// singleLinkedList.traverse();
+		List<Integer> list = new ArrayList<Integer>();
+		list.add(12);
+		list.add(13);
+		list.add(2);
+        Iterator iteratot = list.iterator();
+		ListIterator<Integer> i = list.listIterator();
+		System.out.println(i.next());
+		Collections.sort(list);
+		System.out.println(list);
 
 	}
 }
