@@ -7,7 +7,8 @@ package test.queue;
  */
 public class ArrayQueue {
 	    private int max;        //定义队列的大小
-	    private int front;      //定义队列的头（指向队列的头的前一个位置）
+	    private int front;  
+	    //定义队列的头（指向队列的头的前一个位置）
 	    private int real;       //定义队列的尾部
 	    private int[] arr;
 
