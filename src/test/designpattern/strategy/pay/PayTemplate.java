@@ -9,7 +9,7 @@ import java.util.HashMap;
  */
 public class PayTemplate {
 	
-	public  static final String ALIBABA = "aliba";
+	public static final String ALIBABA = "aliba";
 	public static final String WECHART = "weChart";
 	public static final String UNIONPAY = "unionPay";
 	public static final String DELAULT = "unionPay";
