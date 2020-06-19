@@ -13,7 +13,7 @@ import java.util.Stack;
  * @author yang
  *
  */
-public class LinkedList {
+public class LinkedList<I extends Number> {
 	public static void main(String[] args) {
 
 //		Node node1 = new Node(1, "���", "lihao");
