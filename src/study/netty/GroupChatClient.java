@@ -39,6 +39,7 @@ public class GroupChatClient {
     }
 
     //从服务器读取数据
+
     public  void readInfo() throws IOException {
         int select = selector.select();
         if(select > 0){
