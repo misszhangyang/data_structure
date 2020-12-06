@@ -13,6 +13,9 @@ import java.util.Iterator;
  * @Description: 群聊系统服务类
  * @Date: 2020/12/6 6:49 下午
  * @Version: 1.0
+ * 服务端
+   1  服务器启动并且监听6667端口
+   2  接受消息并转发至其他的客户端
  */
 public class GroupChatServer {
 
