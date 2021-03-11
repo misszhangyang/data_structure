@@ -1,7 +1,5 @@
 package study.netty;
 
-import jdk.jfr.events.SocketReadEvent;
-
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
