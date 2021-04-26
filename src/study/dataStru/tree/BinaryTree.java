@@ -1,34 +1,49 @@
 package study.dataStru.tree;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 //����һ������������˳���ӡ��ǰ������������������������ day10-09
 public class BinaryTree {
 
 	public static void main(String[] args) {
 
-		HeroNode heroNode1 = new HeroNode(1, "��һ");
-		HeroNode heroNode2 = new HeroNode(2, "���");
-		HeroNode heroNode3 = new HeroNode(3, "����");
-		HeroNode heroNode4 = new HeroNode(4, "����");
-		
-		heroNode1.setLeft(heroNode2);
-		heroNode1.setRight(heroNode3);
-		heroNode3.setRight(heroNode4);
-		
-		HeroNodeTree heroNodeTree = new HeroNodeTree();
-		
-		heroNodeTree.setRoot(heroNode1);
-		
-		//ǰ����� 1234
-		System.out.println("ǰ�����");
-		heroNodeTree.preTree();
-		
-		System.out.println("�������");
-		//�������2134
-		heroNodeTree.midTree();
-		
-		//�������2431
-		System.out.println("�������");
-		heroNodeTree.befTree();
+		Integer[] myArray = {1, 2, 3};
+		List collect = Arrays.stream(myArray).collect(Collectors.toList());
+
+		int [] arr1 = { 1, 2, 3 };
+		List<Integer> collect1 = Arrays.stream(arr1).boxed().collect(Collectors.toList());
+
+		List myList = Arrays.asList(myArray);
+		System.out.println(myList.size());//1
+		System.out.println(myList.get(0));//数组地址值
+		System.out.println(myList.get(1));//报错：ArrayIndexOutOfBoundsException
+
+//		HeroNode heroNode1 = new HeroNode(1, "��һ");
+//		HeroNode heroNode2 = new HeroNode(2, "���");
+//		HeroNode heroNode3 = new HeroNode(3, "����");
+//		HeroNode heroNode4 = new HeroNode(4, "����");
+//
+//		heroNode1.setLeft(heroNode2);
+//		heroNode1.setRight(heroNode3);
+//		heroNode3.setRight(heroNode4);
+//
+//		HeroNodeTree heroNodeTree = new HeroNodeTree();
+//
+//		heroNodeTree.setRoot(heroNode1);
+//
+//		//ǰ����� 1234
+//		System.out.println("ǰ�����");
+//		heroNodeTree.preTree();
+//
+//		System.out.println("�������");
+//		//�������2134
+//		heroNodeTree.midTree();
+//
+//		//�������2431
+//		System.out.println("�������");
+//		heroNodeTree.befTree();
 	}
 
 }

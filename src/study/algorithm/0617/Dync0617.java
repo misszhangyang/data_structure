@@ -11,7 +11,6 @@ public class Dync0617 {
         int[] A = {12,31,3,43,121};
         int left = A[0], res = Integer.MIN_VALUE;
         for (int j = 1; j < A.length; j++) {
-
             res = Math.max(res, left + A[j] - j);
             left = Math.max(left, A[j] + j);
         }

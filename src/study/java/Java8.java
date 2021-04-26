@@ -69,8 +69,25 @@ public class Java8 {
         System.out.println(String.format("sequential sort took: %d ms", millis));
 
 
-        Map<Integer,String> map = new HashMap<Integer, String>();
-        map.putIfAbsent();
+        //Lamda表达式
+        List<String> strLists = Arrays.asList("peter", "anna", "mike", "xenia");
+        strLists.sort((g, h) -> g.compareTo(h));
+
+
+        String str = "1232133213132adwqdqw";
+        List<String> strings = Arrays.asList(str.split(""));
+        int[] arr = new int[strings.size()];
+        //字符hash
+        char[] chars = str.toCharArray();
+        for(char item : chars){
+           if(arr[item-'0'] != 0){
+               System.out.println("有重复");
+           }
+           arr[item-'0']++;
+        }
+        str.indexOf('2');
+        str.lastIndexOf('2');
+
     }
 
 

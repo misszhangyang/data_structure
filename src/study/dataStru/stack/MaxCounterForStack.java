@@ -1,7 +1,12 @@
 package study.dataStru.stack;
 
+import java.util.HashSet;
+
 public class MaxCounterForStack {
 	public static void main(String[] args) {
+
+		HashSet hashSet = new HashSet();
+
 		MaxCounterStack numStack = new MaxCounterStack(7);
 		MaxCounterStack chStack = new MaxCounterStack(7);
 		String str = "90+9+5*7-2";
